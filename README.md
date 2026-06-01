@@ -51,3 +51,5 @@ npm run dev
 ## 📸 Design Reference
 
 Inspired by a clean calendar UI with a blue gradient header, card-based task list, and minimal interactions.
+<img width="736" height="552" alt="download (2)" src="https://github.com/user-attachments/assets/ef80b3c9-3149-4ad4-8f53-c8ead2d99b9a" />
+
