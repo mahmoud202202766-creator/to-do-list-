@@ -1,16 +1,53 @@
-# React + Vite
+# 📅 Task Manager App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, calendar-inspired task manager built with React and Tailwind CSS.
 
-Currently, two official plugins are available:
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react) ![Vite](https://img.shields.io/badge/Vite-6-646CFF?logo=vite) ![TailwindCSS](https://img.shields.io/badge/Tailwind-4-38BDF8?logo=tailwindcss)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- ✅ **Add tasks** — title, subtitle, and time
+- ✏️ **Edit tasks** — update any task's details via modal
+- 🗑️ **Delete tasks** — remove tasks with one click
+- 🛡️ **Toggle completion** — mark tasks as done with a shield icon
+- 🔍 **Search** — filter tasks by title in real time
+- 💾 **LocalStorage** — tasks persist across page refreshes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- [React 19](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [Lucide React](https://lucide.dev/) — icons
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── CalendarCard.jsx   # Root component, state management
+│   ├── Header.jsx         # Header with search and date
+│   ├── SearchItem.jsx     # Search input
+│   ├── DateDisplay.jsx    # Current date display
+│   ├── TaskList.jsx       # List of tasks
+│   ├── Task.jsx           # Individual task card
+│   ├── AddButton.jsx      # Floating add button
+│   └── AddTaskModal.jsx   # Add / Edit modal
+```
+
+## 🚀 Getting Started
+
+```bash
+# Clone the repo
+git clone https://github.com/mahmoud202202766-creator/to-do-list-.git
+
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+```
+
+## 📸 Design Reference
+
+Inspired by a clean calendar UI with a blue gradient header, card-based task list, and minimal interactions.
