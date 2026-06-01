@@ -1,9 +1,9 @@
 import SearchItem from "./SearchItem";
 import DateDisplay from "./DateDisplay";
-const Header = () => {
+const Header = ({ search, setSearch }) => {
   return (
     <header className="bg-linear-to-br from-[#4FC3F7] to-[#5B8DEF] text-white p-5 flex flex-col gap-10">
-      <SearchItem />
+      <SearchItem search={search} setSearch={setSearch} />
       <DateDisplay />
     </header>
   );

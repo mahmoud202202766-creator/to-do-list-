@@ -6,6 +6,7 @@ import TaskList from "./TaskList";
 import AddTaskModal from "./AddTaskModal";
 const CalendarCard = () => {
   const [tasks, setTasks] = useState([]);
+  const [search, setSearch] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [isUpdate, setIsUpdate] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
@@ -36,16 +37,18 @@ const CalendarCard = () => {
 
   return (
     <div className="my-8 w-md mx-auto bg-white">
-      <Header />
+      <Header search={search} setSearch={setSearch} />
       <main>
         {tasks.length ? (
           <TaskList
-            tasks={tasks}
+            tasks={tasks.filter((task) =>
+              task.title.toLowerCase().includes(search.toLowerCase()),
+            )}
             onDelete={onDelete}
             setIsUpdate={setIsUpdate}
             setIsOpen={setIsOpen}
             setSelectedTask={setSelectedTask}
-            onToggle = {onToggle}
+            onToggle={onToggle}
           />
         ) : null}
         <AddButton isOpen={isOpen} setIsOpen={setIsOpen} />
