@@ -7,6 +7,8 @@ import AddTaskModal from "./AddTaskModal";
 const CalendarCard = () => {
   const [tasks, setTasks] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [selectedTask, setSelectedTask] = useState(null);
 
   const onAdd = (task) => {
     setTasks([...tasks, { ...task, id: Date.now() }]);
@@ -17,15 +19,47 @@ const CalendarCard = () => {
     setTasks(listItems);
   };
 
-  
+  const onUpdate = (id, updatedTask) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, ...updatedTask } : task,
+      ),
+    );
+  };
+  const onToggle = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task,
+      ),
+    );
+  };
+
   return (
     <div className="my-8 w-md mx-auto bg-white">
       <Header />
       <main>
-        {tasks.length ? <TaskList tasks={tasks} onDelete={onDelete} /> : null}
+        {tasks.length ? (
+          <TaskList
+            tasks={tasks}
+            onDelete={onDelete}
+            setIsUpdate={setIsUpdate}
+            setIsOpen={setIsOpen}
+            setSelectedTask={setSelectedTask}
+            onToggle = {onToggle}
+          />
+        ) : null}
         <AddButton isOpen={isOpen} setIsOpen={setIsOpen} />
       </main>
-      <AddTaskModal isOpen={isOpen} setIsOpen={setIsOpen} onAdd={onAdd} />
+      <AddTaskModal
+        key={selectedTask?.id ?? "new"}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        onAdd={onAdd}
+        onUpdate={onUpdate}
+        isUpdate={isUpdate}
+        setIsUpdate={setIsUpdate}
+        selectedTask={selectedTask}
+      />
     </div>
   );
 };

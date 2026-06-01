@@ -1,11 +1,20 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 
-const AddTaskModal = ({ isOpen, onAdd, setIsOpen }) => {
+const AddTaskModal = ({
+  isOpen,
+  onAdd,
+  setIsOpen,
+  isUpdate,
+  setIsUpdate,
+  onUpdate,
+  selectedTask,
+}) => {
   const [task, setTask] = useState({
-    title: "",
-    subtitle: "",
-    time: "",
+    id: selectedTask?.id || null,
+    title: selectedTask?.title || "",
+    subtitle: selectedTask?.subtitle || "",
+    time: selectedTask?.time || "",
   });
 
   if (!isOpen) return null;
@@ -17,7 +26,14 @@ const AddTaskModal = ({ isOpen, onAdd, setIsOpen }) => {
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-lg font-bold text-gray-700">Add New Task</h2>
           <button onClick={() => setIsOpen(false)}>
-            <X size={20} className="text-gray-400" />
+            <X
+              onClick={() => {
+                setIsUpdate(false);
+                setIsOpen(false);
+              }}
+              size={20}
+              className="text-gray-400"
+            />
           </button>
         </div>
 
@@ -64,17 +80,33 @@ const AddTaskModal = ({ isOpen, onAdd, setIsOpen }) => {
           >
             Cancel
           </button>
-          <button
-            onClick={() => {
-              if (!task.title.trim()) return;
-              setIsOpen(false);
-              onAdd(task);
-              setTask({ title: "", subtitle: "", time: "" });
-            }}
-            className="flex-1 py-2 rounded-xl bg-blue-400 text-white text-sm font-semibold"
-          >
-            Add
-          </button>
+
+          {!isUpdate && (
+            <button
+              onClick={() => {
+                if (!task.title.trim()) return;
+                setIsOpen(false);
+                onAdd(task);
+                setTask({ title: "", subtitle: "", time: "" });
+              }}
+              className="flex-1 py-2 rounded-xl bg-blue-400 text-white text-sm font-semibold"
+            >
+              Add
+            </button>
+          )}
+
+          {isUpdate && (
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                setIsUpdate(false);
+                onUpdate(task.id, task);
+              }}
+              className="flex-1 py-2 rounded-xl bg-blue-400 text-white text-sm font-semibold"
+            >
+              Save
+            </button>
+          )}
         </div>
       </div>
     </div>
