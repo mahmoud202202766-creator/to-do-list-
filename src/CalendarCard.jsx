@@ -1,9 +1,15 @@
+import AddButton from "./AddButton";
 import Header from "./Header";
+import TaskList from "./TaskList";
 const CalendarCard = () => {
   return (
-    <main className="my-8 w-md mx-auto">
+    <div className="my-8 w-md mx-auto bg-white">
       <Header />
-    </main>
+      <main>
+        <TaskList />
+        <AddButton />
+      </main>
+    </div>
   );
 };
 
